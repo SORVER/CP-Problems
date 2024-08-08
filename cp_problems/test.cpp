@@ -2,40 +2,30 @@
 using namespace std;
 #define ll long long
 
+using namespace __gnu_pbds
+
 
 int main() {
 
 
 
-    ll t; cin >> t;
-    while (t--)
-    {
+    ordered_set X;
+    X.insert(1);
+    X.insert(2);
+    X.insert(4);
+    X.insert(8);
+    X.insert(16);
 
-        ll n; cin >> n;
-        char arr[n];
+    cout<<*X.find_by_order(1)<<endl; // 2
+    cout<<*X.find_by_order(2)<<endl; // 4
+    cout<<*X.find_by_order(4)<<endl; // 16
+    cout<<(X.end()==X.find_by_order(6))<<endl; // true
 
-        for(ll i=0;i <n;i++){cin >> arr[i]; }
-
-
-        vector <ll> ans;
-
-        bool bat = false ;
-        for(ll i = 0;i < n;i++){
-            if(arr[i] == '0' && bat == false ) {ans.push_back(0); bat = true;}
-            if(arr[i] == '1') {ans.push_back(1); bat = false;}
-
-
-        }
-
-        ll anso = 0;
-        for(ll i = 0;i <ans.size();i++){
-
-            anso += ans[i];
-        }
-
-        if(anso > ans.size() - anso ||( n ==1 && ans[0] ==1)) cout << "Yes\n"; else cout << "No\n";
-
-    }
+    cout<<X.order_of_key(-5)<<endl;  // 0
+    cout<<X.order_of_key(1)<<endl;   // 0
+    cout<<X.order_of_key(3)<<endl;   // 2
+    cout<<X.order_of_key(4)<<endl;   // 2
+    cout<<X.order_of_key(400)<<endl; // 5
 
     // output: 1 2 3 4 6 9 12 18 36
 }

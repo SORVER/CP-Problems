@@ -1,31 +1,40 @@
+# include <iostream>
+# define ll long long
+
 #include <bits/stdc++.h>
-using namespace std;
-#define ll long long
-
-using namespace __gnu_pbds
 
 
-int main() {
+using namespace std ;
+
+
+void tryt(vector <ll> arr){
+           
+           vector <ll> arr2 = arr;
+           arr2[0] = (arr[0]| arr[1]);
+           cout << arr2[0] << ", ";
+
+           for(ll i = 1;i < arr2.size() -1;i++){
+                     arr2[i] = ((arr[i-1]| arr[i]) | arr[i+1]);
+                     cout << arr2[i] << ", ";
+           }
+}
+int main (){
 
 
 
-    ordered_set X;
-    X.insert(1);
-    X.insert(2);
-    X.insert(4);
-    X.insert(8);
-    X.insert(16);
+       ll t; cin >> t; while (t--){
+            ll n ;cin >> n;
+             vector<ll> arr(n);
+             
+            for(ll i =0 ;i < n ;i++){
+                   cin >> arr[i];
+            }
 
-    cout<<*X.find_by_order(1)<<endl; // 2
-    cout<<*X.find_by_order(2)<<endl; // 4
-    cout<<*X.find_by_order(4)<<endl; // 16
-    cout<<(X.end()==X.find_by_order(6))<<endl; // true
+            for(ll i = 1;i < n;i ++){
+                cout << arr[i] << " ";
+            }
+            cout << arr[0] << "\n";
+            
 
-    cout<<X.order_of_key(-5)<<endl;  // 0
-    cout<<X.order_of_key(1)<<endl;   // 0
-    cout<<X.order_of_key(3)<<endl;   // 2
-    cout<<X.order_of_key(4)<<endl;   // 2
-    cout<<X.order_of_key(400)<<endl; // 5
-
-    // output: 1 2 3 4 6 9 12 18 36
+       }
 }
